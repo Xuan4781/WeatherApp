@@ -44,3 +44,11 @@ h1 {
   width: 5em;
   cursor: pointer;
 }
+
+#weather-wrapper {
+  display: flex;
+}
+
+#weather-search {
+  display: flex;
+}
