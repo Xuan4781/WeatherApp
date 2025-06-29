@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(https://rlv.zcache.com/funny_cat_kitty_weatherman_in_yellow_slicker_postcard-r33594c4c64ca458d8a3062e2fbb7e23a_qdey1_644.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  height: 100vh;
+}
