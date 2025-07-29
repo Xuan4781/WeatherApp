@@ -38,7 +38,21 @@ function fetchWeather() {
     
     //get current weather based on the coords
     async function getWeatherData(lon, lat){
-
+        const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+        const response = await fetch(weatherURL);
+        if (!response.ok){
+            console.log("Bad response!", response.status);
+            return;
+        }
+        const data = await response.json();
+        weatherDataSection.innerHTML = `
+        <img src = "https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="${data.weather[0].description}" width="100" />
+        <div>
+            <h2>${data.name}</h2>
+            <p><strong>Temperature:</strong> ${Math.round(data.main.temp - 273.15)}°C</p>
+            <p><strong>Description:</strong> ${data.weather[0].description}</p>
+        </div>
+        `
     }
   }
 
