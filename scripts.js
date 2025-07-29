@@ -1,4 +1,4 @@
-function fetchWeather() {
+async function fetchWeather() {
   let searchInput = document.getElementById("search").value;
   const weatherDataSection = document.getElementById("weather-data");
   weatherDataSection.style.display = "block";
@@ -9,10 +9,10 @@ function fetchWeather() {
     <div>
         <h2>Empty Input!</h2>
         <p>Please try again with a valid <u>city name</u>.</p>
-    <div>
+    </div>
     `;
     return;
-
+    }
     //gets location's lon and lat from a name
     async function getLonAndLat(){
         const countryCode = 1;
@@ -35,7 +35,7 @@ function fetchWeather() {
             return data[0];
         }
     }
-    
+
     //get current weather based on the coords
     async function getWeatherData(lon, lat){
         const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
@@ -54,6 +54,8 @@ function fetchWeather() {
         </div>
         `
     }
-  }
+    document.getElementById("search").value = "";
+    const geocodeData = await getLonAndLat();
+    getWeatherData(geocodeData.lon, geocodeData.lat);
 
 }
