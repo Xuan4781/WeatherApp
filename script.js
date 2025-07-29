@@ -15,7 +15,7 @@ async function fetchWeather() {
     }
     //gets location's lon and lat from a name
     async function getLonAndLat(){
-        const countryCode = 1;
+        const countryCode = "US"
         const geocodeURL = `https://api.openweathermap.org/geo/1.0/direct?q=${searchInput.replace(" ", "%20")},${countryCode}&limit=1&appid=${apiKey}`;
         const response = await fetch(geocodeURL);
         if (!response.ok){
@@ -47,6 +47,15 @@ async function fetchWeather() {
         const data = await response.json();
         weatherDataSection.innerHTML = `
         <img src = "https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="${data.weather[0].description}" width="100" />
+        <div>
+            <h2>${data.name}</h2>
+            <p><strong>Temperature:</strong> ${Math.round(data.main.temp - 273.15)}&deg;</p>
+            <p><strong>Description:</strong> ${data.weather[0].description}</p>
+        </div>
+        `
+        weatherDataSection.style.display = "flex";
+        weatherDataSection.innerHTML = `
+        <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="${data.weather[0].description}" width="100" />
         <div>
             <h2>${data.name}</h2>
             <p><strong>Temperature:</strong> ${Math.round(data.main.temp - 273.15)}°C</p>
