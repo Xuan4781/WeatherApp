@@ -2,15 +2,23 @@ function fetchWeather() {
   let searchInput = document.getElementById("search").value;
   const weatherDataSection = document.getElementById("weather-data");
   weatherDataSection.style.display = "block";
-  const apiKey = "eca0833c6f16085ce55c023848013cfe"; 
-}
+  const apiKey = ""; 
 
-if (searchInput == "") {
-  weatherDataSection.innerHTML = `
-  <div>
-    <h2>Empty Input!</h2>
-    <p>Please try again with a valid <u>city name</u>.</p>
-  </div>
-  `;
-  return;
+  if (searchInput == ""){
+    weatherDataSection.innerHTML = `
+    <div>
+        <h2>Empty Input!</h2>
+        <p>Please try again with a valid <u>city name</u>.</p>
+    <div>
+    `;
+    return;
+
+    async function getLonAndLat(){
+
+    }
+    async function getWeatherData(lon, lat){
+        
+    }
+  }
+
 }
